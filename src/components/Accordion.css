@@ -1,21 +1,23 @@
 .accordion {
-  margin: 0 auto;
+  text-align: center;
 }
 .accordion-section {
-  background: lightsteelblue;
+  display: inline-block;
+  /* border: 3px solid #eee8e1; */
+  background: #f7f5f3;
   padding: 5px;
   border-radius: 200px;
   width: 80px;
   height: 80px;
-  float: left;
   margin: 5px;
 }
 .accordion-carat {
   float: right;
-  color: lightsteelblue;
+  color: #ffa029;
 }
 .accordion-section-content {
-  background: lightsteelblue;
+
+  background: #ffa029;
   margin-top: 10px;
   padding: 10px 20px;
   border-radius: 5px;
@@ -23,6 +25,6 @@
 }
 .accordion-section-label {
   font-size: 55px;
-  color: white;
+  color: #ffa029;
   line-height: 80px;
 }

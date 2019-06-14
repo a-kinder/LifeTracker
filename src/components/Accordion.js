@@ -38,7 +38,7 @@ class Accordion extends Component {
     } = this;
 
     return (
-      <div class="accordion">
+      <div className="accordion">
         {children.map(child => (
           <AccordionSection
             isOpen={!!openSections[child.props.label]}
