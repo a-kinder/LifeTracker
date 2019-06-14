@@ -1,0 +1,28 @@
+.accordion {
+  margin: 0 auto;
+}
+.accordion-section {
+  background: lightsteelblue;
+  padding: 5px;
+  border-radius: 200px;
+  width: 80px;
+  height: 80px;
+  float: left;
+  margin: 5px;
+}
+.accordion-carat {
+  float: right;
+  color: lightsteelblue;
+}
+.accordion-section-content {
+  background: lightsteelblue;
+  margin-top: 10px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  margin: 0 auto;
+}
+.accordion-section-label {
+  font-size: 55px;
+  color: white;
+  line-height: 80px;
+}
