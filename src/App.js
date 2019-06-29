@@ -3,6 +3,42 @@ import Accordion from "./components/Accordion";
 
 import "./App.css";
 
+const starting_state = [
+  {
+    name: "medications",
+    items: [
+      {
+        icon: "fa fa-pills",
+        name: "tranexamic acid"
+      },
+      {
+        icon: "fa fa-pills",
+        name: "naproxen"
+      },
+      {
+        icon: "fa fa-pills",
+        name: "iron"
+      }
+    ]
+  },
+  {
+    name: "symptoms",
+    items: [
+      {
+        icon: "fa fa-pills",
+        name: "cramps"
+      },
+      {
+        icon: "fa fa-pills",
+        name: "bloating"
+      }
+    ]
+  },
+  { name: "mood", items: [] },
+  { name: "menstrual cycle", items: [] },
+  { name: "energy", items: [] }
+];
+
 function App() {
   return (
     <div className="app">
@@ -12,15 +48,16 @@ function App() {
         </div>
         LifeTracker
       </div>
-      <Accordion>
-        <div label="fa fa-venus" />
-        <div label="fa fa-pills" />
-        <div label="fa fa-tint" />
-        <div label="far fa-smile" />
-        <div label="fa fa-battery-half" />
-        <div label="fa fa-apple-alt" />
-        <div label="fa fa-dumbbell" />
-      </Accordion>
+      {starting_state.map(header => (
+        <div class="header">
+          {header.name}
+          <Accordion>
+            {header.items.map(item => (
+              <div label={item.icon} />
+            ))}
+          </Accordion>
+        </div>
+      ))}
     </div>
   );
 }

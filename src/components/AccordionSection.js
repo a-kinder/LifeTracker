@@ -24,10 +24,6 @@ class AccordionSection extends Component {
       <div className="accordion-section">
         <div className="accordion-section-label" onClick={onClick}>
           <i className={label} />
-          <div className="accordion-carat">
-            {/* {!isOpen && <span>&#9650;</span>}
-            {isOpen && <span>&#9660;</span>} */}
-          </div>
         </div>
         {isOpen && (
           <div className="accordion-section-content">{this.props.children}</div>
