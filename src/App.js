@@ -6,37 +6,44 @@ import "./App.css";
 const starting_state = [
   {
     name: "medications",
+    slug: "medications",
     items: [
       {
         icon: "fa fa-pills",
-        name: "tranexamic acid"
+        name: "tranexamic acid",
+        slug: "tranexamic-acid"
       },
       {
         icon: "fa fa-pills",
-        name: "naproxen"
+        name: "naproxen",
+        slug: "naproxen"
       },
       {
         icon: "fa fa-pills",
-        name: "iron"
+        name: "iron",
+        slug: "iron"
       }
     ]
   },
   {
     name: "symptoms",
+    slug: "symptoms",
     items: [
       {
         icon: "fa fa-pills",
-        name: "cramps"
+        name: "cramps",
+        slug: "cramps"
       },
       {
         icon: "fa fa-pills",
-        name: "bloating"
+        name: "bloating",
+        slug: "bloating"
       }
     ]
   },
-  { name: "mood", items: [] },
-  { name: "menstrual cycle", items: [] },
-  { name: "energy", items: [] }
+  { slug: "mood", name: "mood", items: [] },
+  { slug: "menstrual cycle", name: "menstrual cycle", items: [] },
+  { slug: "energy", name: "energy", items: [] }
 ];
 
 function App() {
@@ -48,16 +55,7 @@ function App() {
         </div>
         LifeTracker
       </div>
-      {starting_state.map(header => (
-        <div class="header">
-          {header.name}
-          <Accordion>
-            {header.items.map(item => (
-              <div label={item.icon} />
-            ))}
-          </Accordion>
-        </div>
-      ))}
+      <Accordion>{starting_state}</Accordion>
     </div>
   );
 }

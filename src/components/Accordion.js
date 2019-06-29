@@ -41,12 +41,13 @@ class Accordion extends Component {
       <div className="accordion">
         {children.map(child => (
           <AccordionSection
-            isOpen={!!openSections[child.props.label]}
-            label={child.props.label}
+            isOpen={!!openSections[child.slug]}
+            label={child.slug}
             onClick={onClick}
-            key={child.props.label}
+            key={child.slug}
+            items={child.items}
           >
-            {child.props.children}
+            {child}
           </AccordionSection>
         ))}
       </div>
