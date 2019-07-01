@@ -11,17 +11,20 @@ const starting_state = [
       {
         icon: "fa fa-pills",
         name: "tranexamic acid",
-        slug: "tranexamic-acid"
+        slug: "tranexamic-acid",
+        selected: false
       },
       {
         icon: "fa fa-pills",
         name: "naproxen",
-        slug: "naproxen"
+        slug: "naproxen",
+        selected: false
       },
       {
         icon: "fa fa-pills",
         name: "iron",
-        slug: "iron"
+        slug: "iron",
+        selected: false
       }
     ]
   },
@@ -32,12 +35,14 @@ const starting_state = [
       {
         icon: "fa fa-pills",
         name: "cramps",
-        slug: "cramps"
+        slug: "cramps",
+        selected: false
       },
       {
         icon: "fa fa-pills",
         name: "bloating",
-        slug: "bloating"
+        slug: "bloating",
+        selected: false
       }
     ]
   },

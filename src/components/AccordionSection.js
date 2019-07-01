@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import "./Accordion.css";
+import AccordionItem from "./AccordionItem";
 
 class AccordionSection extends Component {
   static propTypes = {
@@ -10,13 +11,36 @@ class AccordionSection extends Component {
     onClick: PropTypes.func.isRequired,
     items: PropTypes.array.isRequired
   };
+  constructor(props) {
+    super(props);
 
+    const selectedItems = {};
+
+    this.state = { selectedItems };
+  }
   onClick = () => {
     this.props.onClick(this.props.label);
   };
+  selectItem = slug => {
+    const {
+      state: { selectedItems }
+    } = this;
 
+    const isOpen = !!selectedItems[slug];
+
+    this.setState({
+      selectedItems: {
+        [slug]: !isOpen
+      }
+    });
+  };
+  isSelected = slug => {
+    return this.state.selectedItems[slug];
+  };
   render() {
     const {
+      selectItem,
+      isSelected,
       onClick,
       props: { isOpen, label }
     } = this;
@@ -29,9 +53,14 @@ class AccordionSection extends Component {
         {isOpen && (
           <div className="grid-items">
             {this.props.items.map(item => (
-              <div className="grid-item" key={item.slug} onClick={onClick}>
-                {item.name}
-              </div>
+              <AccordionItem
+                slug={item.slug}
+                icon={item.icon}
+                name={item.name}
+                key={item.slug}
+                isSelected={isSelected}
+                selectItem={selectItem}
+              />
             ))}
           </div>
         )}
