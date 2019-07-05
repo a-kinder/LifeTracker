@@ -7,20 +7,17 @@ export default {
         {
           icon: "fa fa-pills",
           name: "tranexamic acid",
-          slug: "tranexamic-acid",
-          selected: false
+          slug: "tranexamic-acid"
         },
         {
           icon: "fa fa-pills",
           name: "naproxen",
-          slug: "naproxen",
-          selected: false
+          slug: "naproxen"
         },
         {
           icon: "fa fa-pills",
           name: "iron",
-          slug: "iron",
-          selected: false
+          slug: "iron"
         }
       ]
     },
@@ -31,19 +28,18 @@ export default {
         {
           icon: "fa fa-pills",
           name: "cramps",
-          slug: "cramps",
-          selected: false
+          slug: "cramps"
         },
         {
           icon: "fa fa-pills",
           name: "bloating",
-          slug: "bloating",
-          selected: false
+          slug: "bloating"
         }
       ]
     },
     { slug: "mood", name: "mood", items: [] },
     { slug: "menstrual cycle", name: "menstrual cycle", items: [] },
     { slug: "energy", name: "energy", items: [] }
-  ]
+  ],
+  open_sections: []
 };

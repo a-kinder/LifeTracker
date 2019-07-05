@@ -14,15 +14,12 @@ const todoReducer = (state, action) => {
       });
       return { ...state, items: new_items };
     }
-    case Types.OPEN_SECTION: {
-      const new_sections = state.sections.map(section => {
-        if (section.slug === action.payload) {
-          return { ...section, open: !section.open };
-        } else {
-          return section;
-        }
-      });
-      return { ...state, sections: new_sections };
+    case Types.TOGGLE_OPEN_SECTION: {
+      var openBool = state.open_sections[action.payload] || false;
+      return {
+        ...state,
+        open_sections: { ...state.open_sections, [action.payload]: !openBool }
+      };
     }
     default:
       return state;

@@ -1,5 +1,5 @@
 export const SELECT_ITEM = "SELECT_ITEM";
-export const OPEN_SECTION = "OPEN_SECTION";
+export const TOGGLE_OPEN_SECTION = "TOGGLE_OPEN_SECTION";
 
 //  actions
 
@@ -8,7 +8,7 @@ export const selectItem = slug => ({
   payload: slug
 });
 
-export const openSection = slug => ({
-  type: OPEN_SECTION,
+export const toggleOpenSection = slug => ({
+  type: TOGGLE_OPEN_SECTION,
   payload: slug
 });

@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import "./Accordion.css";
 import AccordionSection from "./AccordionSection";
 import { connect } from "react-redux";
-import { selectItem, openSection } from "../actions";
+import { selectItem, toggleOpenSection } from "../actions";
 
 class Accordion extends Component {
   // static propTypes = {
@@ -17,7 +17,9 @@ class Accordion extends Component {
   }
 
   onItemClick = label => {
-    openSection(label);
+    // const { openSection } = this.props;
+
+    this.props.toggleOpenSection(label);
     // const {
     //   state: { openSections }
     // } = this;
@@ -36,8 +38,7 @@ class Accordion extends Component {
       <div className="accordion">
         {sections.map(child => (
           <AccordionSection
-            // isOpen={!!openSections[child.slug]}
-            isOpen={false}
+            isOpen={this.props.open_sections[child.slug] || false}
             label={child.slug}
             onClick={this.onItemClick}
             key={child.slug}
@@ -52,15 +53,17 @@ class Accordion extends Component {
 }
 
 Accordion.defaultProps = {
-  sections: []
+  sections: [],
+  open_sections: []
 };
-Accordion.mapStateToProps = ({ sections }) => ({
-  sections
+Accordion.mapStateToProps = ({ sections, open_sections }) => ({
+  sections,
+  open_sections
 });
 
 Accordion.mapDispatchToProps = {
   selectItem: selectItem,
-  openSection: openSection
+  toggleOpenSection: toggleOpenSection
 };
 Accordion.propTypes = {
   sections: PropTypes.arrayOf(
@@ -69,7 +72,8 @@ Accordion.propTypes = {
       slug: PropTypes.string.isRequired,
       items: PropTypes.array.isRequired
     }).isRequired
-  ).isRequired
+  ).isRequired,
+  open_sections: PropTypes.array
 };
 
 export default connect(
