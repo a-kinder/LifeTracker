@@ -2,48 +2,44 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import "./Accordion.css";
 import AccordionSection from "./AccordionSection";
+import { connect } from "react-redux";
+import { selectItem, openSection } from "../actions";
 
 class Accordion extends Component {
-  static propTypes = {
-    children: PropTypes.instanceOf(Object).isRequired
-  };
+  // static propTypes = {
+  //   children: PropTypes.instanceOf(Object).isRequired
+  // };
 
   constructor(props) {
     super(props);
-
-    const openSections = {};
-
-    this.state = { openSections };
+    this.props = { ...this.state };
+    this.onItemClick = this.onItemClick.bind(this);
   }
 
-  onClick = label => {
-    const {
-      state: { openSections }
-    } = this;
-
-    const isOpen = !!openSections[label];
-
-    this.setState({
-      openSections: {
-        [label]: !isOpen
-      }
-    });
+  onItemClick = label => {
+    openSection(label);
+    // const {
+    //   state: { openSections }
+    // } = this;
+    // const isOpen = !!openSections[label];
+    // this.setState({
+    //   openSections: {
+    //     [label]: !isOpen
+    //   }
+    // });
   };
 
   render() {
-    const {
-      onClick,
-      props: { children },
-      state: { openSections }
-    } = this;
+    const { sections } = this.props;
 
     return (
       <div className="accordion">
-        {children.map(child => (
+        {sections.map(child => (
           <AccordionSection
-            isOpen={!!openSections[child.slug]}
+            // isOpen={!!openSections[child.slug]}
+            isOpen={false}
             label={child.slug}
-            onClick={onClick}
+            onClick={this.onItemClick}
             key={child.slug}
             items={child.items}
           >
@@ -55,4 +51,28 @@ class Accordion extends Component {
   }
 }
 
-export default Accordion;
+Accordion.defaultProps = {
+  sections: []
+};
+Accordion.mapStateToProps = ({ sections }) => ({
+  sections
+});
+
+Accordion.mapDispatchToProps = {
+  selectItem: selectItem,
+  openSection: openSection
+};
+Accordion.propTypes = {
+  sections: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      slug: PropTypes.string.isRequired,
+      items: PropTypes.array.isRequired
+    }).isRequired
+  ).isRequired
+};
+
+export default connect(
+  Accordion.mapStateToProps,
+  Accordion.mapDispatchToProps
+)(Accordion);

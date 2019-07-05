@@ -1,68 +1,24 @@
 import React from "react";
 import Accordion from "./components/Accordion";
-
+import { Provider } from "react-redux";
+import configureStore from "./store";
+import default_store from "./default_store";
 import "./App.css";
-
-const starting_state = [
-  {
-    name: "medications",
-    slug: "medications",
-    items: [
-      {
-        icon: "fa fa-pills",
-        name: "tranexamic acid",
-        slug: "tranexamic-acid",
-        selected: false
-      },
-      {
-        icon: "fa fa-pills",
-        name: "naproxen",
-        slug: "naproxen",
-        selected: false
-      },
-      {
-        icon: "fa fa-pills",
-        name: "iron",
-        slug: "iron",
-        selected: false
-      }
-    ]
-  },
-  {
-    name: "symptoms",
-    slug: "symptoms",
-    items: [
-      {
-        icon: "fa fa-pills",
-        name: "cramps",
-        slug: "cramps",
-        selected: false
-      },
-      {
-        icon: "fa fa-pills",
-        name: "bloating",
-        slug: "bloating",
-        selected: false
-      }
-    ]
-  },
-  { slug: "mood", name: "mood", items: [] },
-  { slug: "menstrual cycle", name: "menstrual cycle", items: [] },
-  { slug: "energy", name: "energy", items: [] }
-];
+const reduxStore = configureStore(default_store);
 
 function App() {
   return (
-    <div className="app">
-      <div className="app-header">
-        <div id="nav">
-          <i className="fas fa-bars" />
+    <Provider store={reduxStore}>
+      <div className="app">
+        <div className="app-header">
+          <div id="nav">
+            <i className="fas fa-bars" />
+          </div>
+          LifeTracker
         </div>
-        LifeTracker
+        <Accordion />
       </div>
-      <Accordion>{starting_state}</Accordion>
-    </div>
+    </Provider>
   );
 }
-
 export default App;
