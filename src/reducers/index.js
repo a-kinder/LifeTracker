@@ -1,7 +1,6 @@
 import * as Types from "../actions/index";
 
 const todoReducer = (state, action) => {
-  console.log(Types);
   switch (action.type) {
     case Types.SELECT_ITEM: {
       //fix

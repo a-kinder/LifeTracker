@@ -13,19 +13,17 @@ class AccordionSection extends Component {
   constructor(props) {
     super(props);
     const isSelected = false;
+    this.onItemClick = this.onItemClick.bind(this);
 
     this.state = { isSelected };
   }
 
-  selectItem = slug => {
-    this.props.selectItem(slug);
-    this.setState({
-      isSelected: !this.state.isSelected
-    });
+  onItemClick = label => {
+    this.props.toggleSelectItem(label);
   };
 
   render() {
-    const { selectItem } = this;
+    const { onItemClick } = this;
     const class_name = this.state.isSelected
       ? "grid-item selected"
       : "grid-item";
@@ -33,7 +31,7 @@ class AccordionSection extends Component {
       <div
         className={class_name}
         key={this.props.slug}
-        onClick={() => selectItem(this.props.slug)}
+        onClick={() => onItemClick(this.props.slug)}
       >
         <i className={this.props.icon} alt={this.props.name} />
       </div>

@@ -41,5 +41,6 @@ export default {
     { slug: "menstrual cycle", name: "menstrual cycle", items: [] },
     { slug: "energy", name: "energy", items: [] }
   ],
-  open_sections: []
+  open_sections: [],
+  selected_items: []
 };
