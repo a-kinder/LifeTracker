@@ -5,11 +5,6 @@ import AccordionSection from "./AccordionSection";
 import { connect } from "react-redux";
 
 class Accordion extends Component {
-  constructor(props) {
-    super(props);
-    this.props = { ...this.state };
-  }
-
   render() {
     const { sections } = this.props;
 

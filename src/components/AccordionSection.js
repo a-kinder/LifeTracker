@@ -16,7 +16,6 @@ class AccordionSection extends Component {
 
     const selectedItems = {};
     this.onSectionClick = this.onSectionClick.bind(this);
-    this.props = { ...this.state };
 
     this.state = { selectedItems };
   }

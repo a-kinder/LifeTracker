@@ -5,16 +5,9 @@ import { toggleSelectItem } from "../actions";
 import { connect } from "react-redux";
 
 class AccordionItem extends Component {
-  static propTypes = {
-    slug: PropTypes.string.isRequired,
-    icon: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired
-  };
   constructor(props) {
     super(props);
     this.onItemClick = this.onItemClick.bind(this);
-
-    this.props = { ...this.state };
   }
 
   onItemClick = label => {
