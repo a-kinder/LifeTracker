@@ -1,21 +1,20 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import "./Accordion.css";
+import { toggleSelectItem } from "../actions";
+import { connect } from "react-redux";
 
-class AccordionSection extends Component {
+class AccordionItem extends Component {
   static propTypes = {
     slug: PropTypes.string.isRequired,
     icon: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-    // isSelected: PropTypes.func.isRequired,
-    selectItem: PropTypes.func.isRequired
+    name: PropTypes.string.isRequired
   };
   constructor(props) {
     super(props);
-    const isSelected = false;
     this.onItemClick = this.onItemClick.bind(this);
 
-    this.state = { isSelected };
+    this.props = { ...this.state };
   }
 
   onItemClick = label => {
@@ -24,9 +23,11 @@ class AccordionSection extends Component {
 
   render() {
     const { onItemClick } = this;
-    const class_name = this.state.isSelected
-      ? "grid-item selected"
-      : "grid-item";
+    const class_name =
+      this.props.slug in this.props.selected_items &&
+      this.props.selected_items[this.props.slug] === true
+        ? "grid-item selected"
+        : "grid-item";
     return (
       <div
         className={class_name}
@@ -39,4 +40,22 @@ class AccordionSection extends Component {
   }
 }
 
-export default AccordionSection;
+AccordionItem.defaultProps = {
+  selected_items: {}
+};
+AccordionItem.mapStateToProps = ({ selected_items }) => ({
+  selected_items
+});
+
+AccordionItem.mapDispatchToProps = { toggleSelectItem: toggleSelectItem };
+AccordionItem.propTypes = {
+  slug: PropTypes.string.isRequired,
+  icon: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  selected_items: PropTypes.object.isRequired
+};
+
+export default connect(
+  AccordionItem.mapStateToProps,
+  AccordionItem.mapDispatchToProps
+)(AccordionItem);

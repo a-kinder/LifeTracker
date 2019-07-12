@@ -3,15 +3,14 @@ import * as Types from "../actions/index";
 const todoReducer = (state, action) => {
   switch (action.type) {
     case Types.SELECT_ITEM: {
-      //fix
-      const new_items = state.sections.map(item => {
-        if (item.slug === action.payload) {
-          return { ...item, selected: !item.selected };
-        } else {
-          return item;
+      var selectedBool = state.selected_items[action.payload] || false;
+      return {
+        ...state,
+        selected_items: {
+          ...state.selected_items,
+          [action.payload]: !selectedBool
         }
-      });
-      return { ...state, items: new_items };
+      };
     }
     case Types.TOGGLE_OPEN_SECTION: {
       var openBool = state.open_sections[action.payload] || false;

@@ -40,13 +40,8 @@ Accordion.mapStateToProps = ({ sections, open_sections }) => ({
 Accordion.propTypes = {
   sections: PropTypes.arrayOf(
     PropTypes.shape({
-      items: PropTypes.arrayOf(
-        PropTypes.shape({
-          name: PropTypes.string.isRequired,
-          slug: PropTypes.string.isRequired,
-          items: PropTypes.array.isRequired
-        })
-      ).isRequired
+      slug: PropTypes.string.isRequired,
+      items: PropTypes.array.isRequired
     })
   ).isRequired
 };

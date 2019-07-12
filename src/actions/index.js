@@ -3,7 +3,7 @@ export const TOGGLE_OPEN_SECTION = "TOGGLE_OPEN_SECTION";
 
 //  actions
 
-export const selectItem = slug => ({
+export const toggleSelectItem = slug => ({
   type: SELECT_ITEM,
   payload: slug
 });

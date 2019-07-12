@@ -20,12 +20,12 @@ class AccordionSection extends Component {
 
     this.state = { selectedItems };
   }
-  onSectionClick = label => {
+  onSectionClick = () => {
     this.props.toggleOpenSection(this.props.label);
   };
   render() {
     const {
-      props: { onSectionClick, label }
+      props: { label }
     } = this;
     const isOpen = this.props.open_sections[label] || false;
     return (
@@ -51,7 +51,7 @@ class AccordionSection extends Component {
 }
 
 AccordionSection.defaultProps = {
-  open_sections: []
+  open_sections: {}
 };
 AccordionSection.mapStateToProps = ({ open_sections }) => ({
   open_sections
@@ -62,11 +62,10 @@ AccordionSection.propTypes = {
   items: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string.isRequired,
-      slug: PropTypes.string.isRequired,
-      items: PropTypes.array.isRequired
+      slug: PropTypes.string.isRequired
     }).isRequired
   ).isRequired,
-  open_sections: PropTypes.array
+  open_sections: PropTypes.object.isRequired
 };
 
 export default connect(
